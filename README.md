@@ -1,4 +1,5 @@
-Bulitvisible House Styles 4.0 / Pug-HTML, SCSS-CSS and Browserify ES6-ES5
+# Builtvisible House Styles 4.0 
+## Pug-HTML, SCSS-CSS and Browserify ES6-ES5
 ===============
 
 Quick start
