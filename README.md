@@ -6,7 +6,7 @@ Quick start
 
 Make sure node.js version is up to date, current node_modules correspond to v10.6.0
 
-Clone the repo and run `npm install`. If you prefer not to use Pug for html markup use `git fetch && git checkout nopug`, to change branch.
+Clone the repo and run `**npm install**`. If you prefer not to use Pug for html markup use `git fetch && git checkout nopug`, to change branch.
 
 Tip: Use https://www.npmjs.com/package/npm-update-all to get the latest version of each packet if there is an error with an obsolete package, make sure you manually change gulp on the package.json to version 4.0.0 if you use this method.
 
@@ -102,8 +102,8 @@ This will open up a tab in your browser, running a server at `localhost:3000` (u
 Gulp features
 -------------
 
-Name | Version | Description
---- | --- | ---
+Name | Description
+--- | ---
 **gulp** | The streaming build system
 **browser-sync** | Live CSS Reload & Browser Syncing.
 **gulp-sass** |  Converts SASS files in CSS.
