@@ -1,4 +1,4 @@
-![alt text](https://avatars3.githubusercontent.com/u/5037626?s=200&v=4) BV House Styles 4.0 - Pug, SASS and Browserify
+Bulitvisible House Styles 4.0 / Pug-HTML, SCSS-CSS and Browserify ES6-ES5
 ===============
 
 Quick start
