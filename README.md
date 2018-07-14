@@ -5,7 +5,7 @@ Pug-HTML, SCSS-CSS and Browserify ES6-ES5
 
 ### Quick start
 
-Make sure node.js version is up to date, current node_modules correspond to v10.6.0
+Make sure node.js version is up to date, current node_modules correspond to v10.6.0.
 
 Clone the repo and run `npm install`. If you prefer not to use Pug for html markup use `git fetch && git checkout nopug`, to change branch.
 
@@ -16,7 +16,6 @@ For all subsequent uses, just run `gulp --dev` to develop.
 For production use `gulp built` to compile Pug to HTML, autoprefix, optimise images and minimise css and JavaScript.
 
 ###### Note, Windows users may need to run the initial command more than once for it to complete successfully.
-
 
 ### General usage notes
 
@@ -30,7 +29,7 @@ For production use `gulp built` to compile Pug to HTML, autoprefix, optimise ima
 
 The BV house styles have been written using the following coding standards, which should be used for all projects. These guidelines will likely evolve over time.
 
-General
+**General**
 
 - Be consistent
 - Code should be clean, commented and readable
@@ -40,7 +39,7 @@ General
 - Indent code logically
 - Don't repeat yourself
 
-HTML
+**HTML**
 
 - Pug preprocessors HTML and gulp will transform it to regular HTML
 - Lowercase everything
@@ -48,7 +47,7 @@ HTML
 - Ensure HTML is valid
 - No inline styles
 
-CSS
+**CSS**
 
 - Use lowercase and hyphens for class names
 - Newline for each style property and classname
@@ -62,7 +61,7 @@ CSS
 - Don't use page specific classes
 - Apply styles using a class name rather than an element name (except for base styles)
 
-JavaScript
+**JavaScript**
 
 - Scripts should only be inline where necessary
 - JS should interact with the DOM using either element IDs, data* attributes or class names that have no styles associated with them, and use the naming convention js-classname, to make it really obvious that they are used only by the JavaScript
@@ -72,8 +71,7 @@ JavaScript
 - Name functions and variables descriptively
 - Camelcase for objects, imported functions and instances
 
-
-Remember SEO
+**Remember SEO**
 
 - Page meta tags including og and any related extra stuff
 - Image alt tags
@@ -82,7 +80,6 @@ Remember SEO
 - CSS, JS etc. should be minified
 - Image sizes should be optimised
 - Overall page size should ideally be less than 2MB!
-
 
 ### Use of Gulp
 
@@ -93,7 +90,7 @@ There is a `gulpfile.js` within this repository to make development much quicker
 
 This will install all the dependencies found in `package.json`, then run the local server through the `gulp` command.
 
-> Note: The `node_modules` folder will not be pushed to the repository as the .gitignore file is present on the repo
+> Note: The `node_modules` folder will not be pushed to the repository as the .gitignore file is present on the repo.
 
 ###### Note for Windows users with Git Bash: you may need to run 'npm run setup' a couple of times for it to finally work.
   
