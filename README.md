@@ -19,7 +19,7 @@ For production use `gulp built` to compile Pug to HTML, autoprefix, optimise ima
 
 ### General usage notes
 
-- Make all changes in `src/` directory, minified/compressed files is then output by gulp to `dist/` (dist/ is deleted everytime gulp is run).
+- Make all changes in `src/` directory, minified/compressed files is then output by gulp to `dist/` *this folder will be deleted everytime gulp is run*.
 - Images should be put in `src/static/img/`. Gulp will apply compression without reducing their quality.
 - JavaScript files should go in `src/static/js/`. Gulp will perform eslint on your code and and browserify will compile and compress all JavaScript files into a single main.min.js.
 - Anything not CSS/JS/images should go in `src/static/assets/` e.g. fonts, videos, other files.
