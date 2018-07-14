@@ -29,7 +29,7 @@ For production use `gulp built` to compile Pug to HTML, autoprefix, optimise ima
 
 The BV house styles have been written using the following coding standards, which should be used for all projects. These guidelines will likely evolve over time.
 
-
+___
 **General**
 ___
 
@@ -41,7 +41,7 @@ ___
 - Indent code logically
 - Don't repeat yourself
 
-
+___
 **HTML**
 ___
 
@@ -51,7 +51,7 @@ ___
 - Ensure HTML is valid
 - No inline styles
 
-
+___
 **CSS**
 ___
 
@@ -67,7 +67,7 @@ ___
 - Don't use page specific classes
 - Apply styles using a class name rather than an element name *except for base styles*
 
-
+___
 **JavaScript**
 ___
 
@@ -79,7 +79,7 @@ ___
 - Name functions and variables descriptively
 - Camelcase for objects, imported functions and instances
 
-
+___
 **Remember SEO**
 ___
 
