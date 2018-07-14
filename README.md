@@ -99,40 +99,40 @@ This will open up a tab in your browser, running a server at `localhost:3000` (u
 
 ### Gulp features
 
-Name | Description
---- | ---
-**gulp** | The streaming build system
-**browser-sync** | Live CSS Reload & Browser Syncing.
-**gulp-sass** |  Converts SASS files in CSS.
-**gulp-pug** | This Gulp plugin enables you to compile your Pug templates into HTML.
-**gulp-sourcemaps** | Source map support for Gulp.js.
-**gulp-autoprefixer** | Prefix CSS after conversion from SASS. 
-**gulp-uglify** | Minify JS files with UglifyJS.
-**gulp-bytediff** | Compare file sizes before and after your gulp build process.
-**gulp-cache** | A cache proxy plugin for Gulp.
-**gulp-concat** | Concatenates files.
-**gulp-duration** | Track the duration of parts of your gulp tasks.
-**gulp-exit** | Terminates gulp task.
-**gulp-cssmin** | Minify css using gulp.
-**gulp-imagemin** | Compresses images - packaged with gifsicle, jpegtran, optipng, and svgo.
-**gulp-load-plugins** | Automatically load any gulp plugins in your package.json.
-**gulp-newer** | Only pass through newer source files.
-**gulp-notify** | Gulp plugin to send messages based on Vinyl Files or Errors to OS.
-**gulp-plumber** | Prevent pipe breaking caused by errors from gulp plugins.
-**gulp-rename** | Rename files.
-**gulp-util** | Utility functions for gulp plugins.
-**babel-core** | Babel compiler core.
-**babel-eslint** | babel-eslint allows you to lint ALL valid Babel code with ESLint.
-**babel-plugin-add-module-exports** | This plugin adds that line automatically, to any module with named exports.
-**babel-preset-env** | A Babel preset that compiles ES2015+ down to ES5.
-**babelify** | Babel browserify transform.
-**browserify** | Use a node-style require() to organize your browser code and load modules installed by npm..
-**watchify** | Watch mode for browserify builds.
-**eslint-friendly-formatter** | Simple formatter/reporter for eslint that's friendly with Sublime Text and iterm2.
-**eslintify** | Stream module for linting JavaScript programs..
-**vinyl-buffer** | Convert streaming vinyl files to use buffers.
-**vinyl-source-stream** | Use conventional text streams at the start of your gulp or vinyl pipelines.
-**del** | Enables the deleting of files.
+| Name | Description
+|--- | --- |
+|**gulp** | The streaming build system. |
+|**browser-sync** | Live CSS Reload & Browser Syncing |
+|**gulp-sass** |  Converts SASS files in CSS |
+|**gulp-pug** | This Gulp plugin enables you to compile your Pug templates into HTML |
+|**gulp-sourcemaps** | Source map support for Gulp.js |
+|**gulp-autoprefixer** | Prefix CSS after conversion from SASS. |
+|**gulp-uglify** | Minify JS files with UglifyJS. |
+|**gulp-bytediff** | Compare file sizes before and after your gulp build process. |
+|**gulp-cache** | A cache proxy plugin for Gulp. |
+|**gulp-concat** | Concatenates files. |
+|**gulp-duration** | Track the duration of parts of your gulp tasks. |
+|**gulp-exit** | Terminates gulp task. |
+|**gulp-cssmin** | Minify css using gulp. |
+|**gulp-imagemin** | Compresses images - packaged with gifsicle, jpegtran, optipng, and svgo. |
+|**gulp-load-plugins** | Automatically load any gulp plugins in your package.json. |
+|**gulp-newer** | Only pass through newer source files. |
+|**gulp-notify** | Gulp plugin to send messages based on Vinyl Files or Errors to OS. |
+|**gulp-plumber** | Prevent pipe breaking caused by errors from gulp plugins. |
+|**gulp-rename** | Rename files. |
+|**gulp-util** | Utility functions for gulp plugins. |
+|**babel-core** | Babel compiler core. |
+|**babel-eslint** | babel-eslint allows you to lint ALL valid Babel code with ESLint. |
+|**babel-plugin-add-module-exports** | This plugin adds that line automatically, to any module with named exports. |
+|**babel-preset-env** | A Babel preset that compiles ES2015+ down to ES5. |
+|**babelify** | Babel browserify transform. |
+|**browserify** | Use a node-style require() to organize your browser code and load modules installed by npm.. |
+|**watchify** | Watch mode for browserify builds. |
+|**eslint-friendly-formatter** | Simple formatter/reporter for eslint that's friendly with Sublime Text and  |iterm2. |
+|**eslintify** | Stream module for linting JavaScript programs.. |
+|**vinyl-buffer** | Convert streaming vinyl files to use buffers. |
+|**vinyl-source-stream** | Use conventional text streams at the start of your gulp or vinyl pipelines. |
+|**del** | Enables the deleting of files. |
 
 ### BrowserSync
   
