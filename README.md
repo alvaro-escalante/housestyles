@@ -18,8 +18,7 @@ For production use `gulp built` to compile Pug to HTML, autoprefix, optimise ima
 ###### Note, Windows users may need to run the initial command more than once for it to complete successfully.
 
 
-General usage notes
--------------------
+### General usage notes
 
 - Make all changes in src/ directory, minified/compressed files is then output by gulp to dist/ (dist/ is deleted everytime gulp is run).
 - Images should be put in src/static/img/. Gulp will apply compression without reducing their quality.
@@ -27,8 +26,7 @@ General usage notes
 - Anything not CSS/JS/images should go in src/static/assets/ e.g. fonts, videos, other files.
 - Autoprefixer offers Browser support for IE11 and above 
 
-Coding standards
-----------------
+### Coding standards
 
 The BV house styles have been written using the following coding standards, which should be used for all projects. These guidelines will likely evolve over time.
 
@@ -86,8 +84,7 @@ Remember SEO
 - Overall page size should ideally be less than 2MB!
 
 
-Use of Gulp
-------------
+### Use of Gulp
 
 There is a `gulpfile.js` within this repository to make development much quicker for the house styles. All you need to do is:
 
@@ -100,8 +97,7 @@ Note for Windows users with Git Bash: you may need to run 'npm run setup' a coup
   
 This will open up a tab in your browser, running a server at `localhost:3000` (unless you have set up a proxy server address - details on how to change this are in the `gulpfile.js` file).
 
-Gulp features
--------------
+### Gulp features
 
 Name | Description
 --- | ---
