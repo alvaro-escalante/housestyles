@@ -53,13 +53,13 @@ The BV house styles have been written using the following coding standards, whic
 - Newline for each style property and classname
 - Don't use IDs for class names
 - Don't use !important
-- Use names based on structure, not presentation e.g. btn-primary not btn-green
-- Don't qualify class names with attribute types e.g. .well, not div.well 
+- Use names based on structure, not presentation e.g. `.btn-primary` not `.btn-green`
+- Don't qualify class names with attribute types e.g. `.well`, not `div.well` 
 - Include a comment where a selector is included for a specific, not immediately obvious reason
 - Write CSS in a modular way if possible, assume that any element could be included anywhere on the site
-- Try to avoid excessive class hierarchy such as .basket .summar .details .product .description .price {color:#FF000;}
+- Try to avoid excessive class hierarchy such as `.basket` `.summar` `.details` `.product` `.description` `.price` `{color:#FF000}`
 - Don't use page specific classes
-- Apply styles using a class name rather than an element name (except for base styles)
+- Apply styles using a class name rather than an element name *except for base styles*
 
 **JavaScript**
 
