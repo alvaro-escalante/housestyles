@@ -1,9 +1,9 @@
-# Builtvisible House Styles 4.0 
-## Pug-HTML, SCSS-CSS and Browserify ES6-ES5
-===============
+Builtvisible House Styles 4.0 
+=============================
+Pug-HTML, SCSS-CSS and Browserify ES6-ES5
+-----------------------------------------
 
-Quick start
------------
+### Quick start
 
 Make sure node.js version is up to date, current node_modules correspond to v10.6.0
 
@@ -15,7 +15,7 @@ For all subsequent uses, just run `gulp --dev` to develop.
 
 For production use `gulp built` to compile Pug to HTML, autoprefix, optimise images and minimise css and JavaScript.
 
-Note, Windows users may need to run the initial command more than once for it to complete successfully.
+###### Note, Windows users may need to run the initial command more than once for it to complete successfully.
 
 
 General usage notes
