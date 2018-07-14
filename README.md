@@ -9,7 +9,7 @@ Make sure node.js version is up to date, current node_modules correspond to v10.
 
 Clone the repo and run `npm install`. If you prefer not to use Pug for html markup use `git fetch && git checkout nopug`, to change branch.
 
-> Tip: Use https://www.npmjs.com/package/npm-update-all to get the latest version of each packet if there is an error with an obsolete package, make sure you manually change gulp on the package.json to version 4.0.0 if you use this method.
+> Tip: Use https://www.npmjs.com/package/npm-update-all to get the latest version of each packet in case there is an error with an obsolete package. Make sure you manually change gulp on the package.json to version 4.0.0 if you use this method.
 
 For all subsequent uses, just run `gulp --dev` to develop.
 
