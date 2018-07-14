@@ -1,4 +1,4 @@
-![alt text](https://36bvmt283fg61unuud3h7qua-wpengine.netdna-ssl.com/wp-content/themes/builtvisible/src/img/logo_b_dark.svg =250x) BV House Styles 4.0 - Pug, SASS and Browserify
+<img src="https://36bvmt283fg61unuud3h7qua-wpengine.netdna-ssl.com/wp-content/themes/builtvisible/src/img/logo_b_dark.svg" alt="Builtvisible" style="width:200px;"/> BV House Styles 4.0 - Pug, SASS and Browserify
 ===============
 
 Quick start
