@@ -4,15 +4,15 @@ BV House Styles 4.0 - Pug, SASS and Browserify
 Quick start
 -----------
 
-Make sure node.js version is up to date, current node_modules correspond to v9.9.0
+Make sure node.js version is up to date, current node_modules correspond to v10.6.0
 
-Clone the repo and run 'npm install'. 
+Clone the repo and run `npm install`. If you prefer not to use Pug for html markup use `git fetch && git checkout nopug`, to change branch.
 
 Tip: Use https://www.npmjs.com/package/npm-update-all to get the latest version of each packet if there is an error with an obsolete package, make sure you manually change gulp on the package.json to version 4.0.0 if you use this method.
 
-For all subsequent uses, just run 'gulp --dev' to develop.
+For all subsequent uses, just run `gulp --dev` to develop.
 
-For production use 'gulp built' to compile Pug to HTML, autoprefix, optimise images and minimise css and JavaScript.
+For production use `gulp built` to compile Pug to HTML, autoprefix, optimise images and minimise css and JavaScript.
 
 Note, Windows users may need to run the initial command more than once for it to complete successfully.
 
