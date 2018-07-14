@@ -31,7 +31,6 @@ The BV house styles have been written using the following coding standards, whic
 
 **General**
 ___
-
 - Be consistent
 - Code should be clean, commented and readable
 - Use graceful degradation
@@ -42,7 +41,6 @@ ___
 
 **HTML**
 ___
-
 - Pug preprocessors HTML and gulp will transform it to regular HTML
 - Lowercase everything
 - New tag, new line
@@ -51,7 +49,6 @@ ___
 
 **CSS**
 ___
-
 - Use lowercase and hyphens for class names
 - Newline for each style property and classname
 - Don't use IDs for class names
@@ -66,7 +63,6 @@ ___
 
 **JavaScript**
 ___
-
 - Scripts should only be inline where necessary
 - JS should interact with the DOM using either element IDs, data* attributes or class names that have no styles associated with them, and use the naming convention js-classname, to make it really obvious that they are used only by the JavaScript
 - Browserify enables modular JS files, you should have JavaScript files for each funcionality divided between core functionality, helper functions, logic and views
@@ -77,7 +73,6 @@ ___
 
 **Remember SEO**
 ___
-
 - Page meta tags including og and any related extra stuff
 - Image alt tags
 - Correct heading structure
