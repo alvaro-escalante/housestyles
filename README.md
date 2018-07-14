@@ -1,4 +1,4 @@
-<img src="https://36bvmt283fg61unuud3h7qua-wpengine.netdna-ssl.com/wp-content/themes/builtvisible/src/img/logo_b_dark.svg" alt="Builtvisible" width="200px" /> BV House Styles 4.0 - Pug, SASS and Browserify
+![alt text](https://avatars3.githubusercontent.com/u/5037626?s=200&v=4) BV House Styles 4.0 - Pug, SASS and Browserify
 ===============
 
 Quick start
@@ -8,7 +8,7 @@ Make sure node.js version is up to date, current node_modules correspond to v10.
 
 Clone the repo and run `npm install`. If you prefer not to use Pug for html markup use `git fetch && git checkout nopug`, to change branch.
 
-Tip: Use https://www.npmjs.com/package/npm-update-all to get the latest version of each packet if there is an error with an obsolete package, make sure you manually change gulp on the package.json to version 4.0.0 if you use this method.
+> Tip: Use https://www.npmjs.com/package/npm-update-all to get the latest version of each packet if there is an error with an obsolete package, make sure you manually change gulp on the package.json to version 4.0.0 if you use this method.
 
 For all subsequent uses, just run `gulp --dev` to develop.
 
