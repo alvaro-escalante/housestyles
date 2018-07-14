@@ -100,7 +100,7 @@ This will open up a tab in your browser, running a server at `localhost:3000` (u
 ### Gulp features
 
 | Name | Description
-|--- | --- |
+| --- | --- |
 |**gulp** | The streaming build system. |
 |**browser-sync** | Live CSS Reload & Browser Syncing |
 |**gulp-sass** |  Converts SASS files in CSS |
