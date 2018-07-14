@@ -136,6 +136,7 @@ This will open up a tab in your browser, running a server at `localhost:3000` (u
 ### BrowserSync
   
 The main component of this Gulp setup is BrowserSync. This plugin provides the following advantages for development:  
+
 - Automatic reload of page when HTML, JS, Images or Assets files are updated and injection when CSS is updated
 - Simultaneous page scrolling for all devices connected to the same link  
 - Clicking links or populating form fields on one device will duplicate this behaviour on all other linked devices  
