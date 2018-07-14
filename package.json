@@ -1,0 +1,51 @@
+{
+  "name": "housestyles-bv",
+  "version": "4.0.0",
+  "license": "MIT",
+  "description": "Gulp capabilities for house styles",
+  "author": "Alvaro Fernandez",
+  "main": "gulpfile.js",
+  "scripts": {
+    "run-npm-install": "npm install",
+    "run-gulp": "gulp",
+    "setup": "npm run run-npm-install && npm run run-gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/builtvisible/house-styles-4.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^8.0.0",
+    "browser-sync": "^2.24.5",
+    "browserify": "^16.2.2",
+    "del": "^3.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslintify": "^3.1.0",
+    "gulp": "4.0.0",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-bytediff": "^1.0.0",
+    "gulp-cache": "^1.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-duration": "0.0.0",
+    "gulp-exit": "0.0.2",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.3.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0",
+    "watchify": "^3.11.0"
+  }
+}
