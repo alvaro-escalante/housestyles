@@ -30,6 +30,7 @@ For production use `gulp built` to compile Pug to HTML, autoprefix, optimise ima
 The BV house styles have been written using the following coding standards, which should be used for all projects. These guidelines will likely evolve over time.
 
 **General**
+___
 
 - Be consistent
 - Code should be clean, commented and readable
@@ -40,6 +41,7 @@ The BV house styles have been written using the following coding standards, whic
 - Don't repeat yourself
 
 **HTML**
+___
 
 - Pug preprocessors HTML and gulp will transform it to regular HTML
 - Lowercase everything
@@ -48,6 +50,7 @@ The BV house styles have been written using the following coding standards, whic
 - No inline styles
 
 **CSS**
+___
 
 - Use lowercase and hyphens for class names
 - Newline for each style property and classname
@@ -62,6 +65,7 @@ The BV house styles have been written using the following coding standards, whic
 - Apply styles using a class name rather than an element name *except for base styles*
 
 **JavaScript**
+___
 
 - Scripts should only be inline where necessary
 - JS should interact with the DOM using either element IDs, data* attributes or class names that have no styles associated with them, and use the naming convention js-classname, to make it really obvious that they are used only by the JavaScript
@@ -72,6 +76,7 @@ The BV house styles have been written using the following coding standards, whic
 - Camelcase for objects, imported functions and instances
 
 **Remember SEO**
+___
 
 - Page meta tags including og and any related extra stuff
 - Image alt tags
