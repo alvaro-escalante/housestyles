@@ -34,20 +34,23 @@ prefix = {
 browserSync = $.browserSync.create(),
 dev = !!$.util.env.dev,
 // Styles SCSS to CSS
-styles = () => {
+Styles = () => {
   // Notification in the terminal on error
   function onError(err) {
     $.notify({
       title: 'CSS Error',
-      subtitle: 'Syntax error in CSS!',
-      message: 
-        $.util.colors.red('\n\n⚡ File: ') + 
-        $.util.colors.yellow(err.relativePath.split('/')[3]) + 
-        $.util.colors.red('\n⚡ Line: ') + 
-        $.util.colors.yellow(err.line) +  
-        $.util.colors.red('\n⚡ Message: ') + 
-        $.util.colors.yellow(err.messageOriginal) + '\n'
+      subtitle: 'Syntax error on ' + err.relativePath.split('/')[3],
+      message: '📍 LINE: ' + err.line + ' - See terminal'
     }).write(err)
+    let report = 
+      $.util.colors.white('\n📍  CSS Error') +
+      $.util.colors.red('\n🔥  File: ') +
+      $.util.colors.yellow(err.relativePath.split('/')[3]) +
+      $.util.colors.red('\n🔥  Line: ') +
+      $.util.colors.yellow(err.line) +
+      $.util.colors.red('\n🔥  Message: ') +
+      $.util.colors.yellow(err.messageOriginal) + '\n'
+    console.log(report)
     this.emit('end')
   }
   return gulp.src(paths.styles.src + 'styles.scss')
@@ -65,14 +68,13 @@ styles = () => {
     .pipe(browserSync.stream({match: '*.css'})) // Stream browser to reflec changes
 },
 // Scripts ES6 Babel to ES5
-compile = watch => {
+Scripts = watch => {
   // Map errors
   const mapError = function(error) {
-    return $.notify({
+    $.notify({
       title: 'Javascript Error',
       subtitle: 'Syntax error in script!',
-      message: error,
-      sound: 'Beep',
+      message: 'Error in JavaScript - See terminal',
       icon: 'node_modules/gulp-notify/assets/gulp-error.png'
     }).write(error)
     this.emit('end')
@@ -113,20 +115,23 @@ compile = watch => {
   rebundle()
 },
 // HTML Pug
-html = buildHTML => {
+Html = buildHTML => {
   // Notification in terminal on error
   function mapError(err) {
     $.notify({
       title: 'HTML Pug Error',
       subtitle: 'Syntax error in Pug!',
-      message: 
-        $.util.colors.red('\n\n⚡ Code: ') + 
-        $.util.colors.yellow(err.code) + 
-        $.util.colors.red('\n⚡ Line: ') + 
-        $.util.colors.yellow(err.line) +  
-        $.util.colors.red('\n⚡ Message: ') + 
-        $.util.colors.yellow(err.msg) + '\n'
+      message: '📍 LINE: ' + err.line + ' - See terminal'
     }).write(err)
+    let report = 
+      $.util.colors.white('\n📍  HTML Error') + 
+      $.util.colors.red('\n💣  Code: ') + 
+      $.util.colors.yellow(err.code) + 
+      $.util.colors.red('\n💣  Line: ') + 
+      $.util.colors.yellow(err.line) +  
+      $.util.colors.red('\n💣  Message: ') + 
+      $.util.colors.yellow(err.msg) + '\n'
+    console.log(report)
     this.emit('end')
   }
   // Perform tasks
@@ -137,7 +142,7 @@ html = buildHTML => {
   .pipe(gulp.dest('dist/'))
 },
 // Images
-images = () => {
+Images = () => {
   return gulp.src(`${paths.images.src}**/*`,{base: paths.images.src})
     .pipe($.plumber(function(error) {
       $.util.log($.util.colors.red(`Error (${error.plugin}):  ${error.message}`))
@@ -148,32 +153,32 @@ images = () => {
     .pipe(gulp.dest(paths.images.dest))
 },
 // Assets
-assets = () => {
+Assets = () => {
   return gulp.src(`${paths.assets.src}**/*`) 
     .pipe($.newer(paths.assets.dest))
     .pipe(gulp.dest(paths.assets.dest))
 },
 // Clear destination dir
-clear = done => {
+Clear = done => {
   $.del.sync('dist/static')
   $.del.sync('dist/index.html')
   done()
 },
 // BrowserSync 
-sync = () => {
+Browsersync = () => {
   browserSync.init(`${paths.styles.dest}*.css`, {
     server: './dist/',
     notify: true,
     debug: false
   })
-  gulp.watch('src/**/*.pug', gulp.series(html)).on('change', browserSync.reload)
-  gulp.watch(`${paths.styles.src}**/*.scss`, gulp.series(styles))
-  gulp.watch(`${paths.images.src}**/*`, gulp.series(images)).on('change', browserSync.reload)
-  gulp.watch(`${paths.assets.src}**/*`, gulp.series(assets)).on('change', browserSync.reload)
+  gulp.watch('src/**/*.pug', gulp.series(Html)).on('change', browserSync.reload)
+  gulp.watch(`${paths.styles.src}**/*.scss`, gulp.series(Styles))
+  gulp.watch(`${paths.images.src}**/*`, gulp.series(Images)).on('change', browserSync.reload)
+  gulp.watch(`${paths.assets.src}**/*`, gulp.series(Assets)).on('change', browserSync.reload)
 },
 // Tasks setup
-development = gulp.series(clear, html, styles, images, assets, gulp.parallel(sync, compile)),
-built = gulp.series(clear, html, styles, images, assets, compile)
+development = gulp.series(Clear, Html, Styles, Images, Assets, gulp.parallel(Scripts, Browsersync)),
+built = gulp.series(Clear, Html, Styles, Images, Assets, Scripts)
 // Initialise tasks
 gulp.task('default', development)
 gulp.task('built', built)
