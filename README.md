@@ -1,5 +1,5 @@
 # Builtvisible House Styles 4.0  
-![Node](https://s3.amazonaws.com/openshift-hub/production/quickstarts/243/nodejs_custom.png?1456926624) ![Gulp](https://i1.wp.com/g00glen00b.be/wp-content/uploads/2014/10/gulp-logo.png?fit=100%2C100&ssl=1) ![Sass](https://avatars.githubusercontent.com/u/317889?v=3&s=100)  ![es6](https://nicholasengleman.com/images/skills-images/es6.png)
+![Node](https://s3.amazonaws.com/openshift-hub/production/quickstarts/243/nodejs_custom.png?1456926624) ![Gulp](https://i1.wp.com/g00glen00b.be/wp-content/uploads/2014/10/gulp-logo.png?fit=100%2C100&ssl=1) ![Sass](https://avatars.githubusercontent.com/u/317889?v=3&s=100) ![es6](https://static1.squarespace.com/static/57b0d254725e25de8d1c672c/57f028f5c534a5d610fcac23/57f02b1b59cc68fe6a8d39da/1475357641698/es6-tile.jpg?format=100w)
 
 Gulp 4, Pug-HTML, SCSS-CSS and Browserify ES6-ES5
 -------------------------------------------------
