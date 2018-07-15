@@ -1,10 +1,6 @@
 'use strict'
 // File paths
 const paths = {
-  templates: {
-    src: 'src/',
-    dest: 'dist/'
-  },
   images: {
     src:  'src/static/img/',
     dest: 'dist/static/img/'
@@ -24,23 +20,22 @@ const paths = {
 },
 // Initialization
 gulp = require('gulp'),
-  source = require('vinyl-source-stream'),
-  formatter = require('eslint-friendly-formatter'),
-  $ = require('gulp-load-plugins')({
-    pattern: '*',
-    camelize: true
-  }),
-  prefix = { browsers: [
-    'iOS >= 8',
-    'Chrome >= 30',
-    'Explorer >= 11',
-    'Last 2 Edge Versions',
-    'Firefox >= 25'
-  ]},
-  browserSync = $.browserSync.create(),
-  dev = !!$.util.env.dev,
-// Styles SCSS
+source = require('vinyl-source-stream'),
+formatter = require('eslint-friendly-formatter'),
+$ = require('gulp-load-plugins')({ pattern: '*', camelize: true }),
+prefix = { 
+  browsers: [
+  'iOS >= 8',
+  'Chrome >= 30',
+  'Explorer >= 11',
+  'Last 2 Edge Versions',
+  'Firefox >= 25' 
+]},
+browserSync = $.browserSync.create(),
+dev = !!$.util.env.dev,
+// Styles SCSS to CSS
 styles = () => {
+  // Notification in the terminal on error
   function onError(err) {
     $.notify({
       title: 'CSS Error',
@@ -55,22 +50,21 @@ styles = () => {
     }).write(err)
     this.emit('end')
   }
-
   return gulp.src(paths.styles.src + 'styles.scss')
-    .pipe($.plumber({errorHandler: onError}))
-    .pipe($.newer(paths.styles.dest))
-    .pipe(dev ? $.sourcemaps.init() : $.util.noop())
-    .pipe($.sass())
-    .pipe($.concat('styles.min.css'))
-    .pipe(dev ? $.util.noop() : $.autoprefixer(prefix) )
-    .pipe(dev ? $.util.noop() : $.bytediff.start() )
-    .pipe(dev ? $.util.noop() : $.cssmin())
-    .pipe(dev ? $.util.noop() : $.bytediff.stop())
-    .pipe(dev ? $.sourcemaps.write('./_maps') : $.util.noop())
-    .pipe(gulp.dest(paths.styles.dest))
-    .pipe(browserSync.stream({match: '*.css'}))
+    .pipe($.plumber({errorHandler: onError})) // Process error
+    .pipe($.newer(paths.styles.dest)) // Rewrite destination dist
+    .pipe(dev ? $.sourcemaps.init() : $.util.noop()) // Enable sourcemaps
+    .pipe($.sass()) // Process Sass to produce css
+    .pipe($.concat('styles.min.css')) // Concat all scss into one css file
+    .pipe(dev ? $.util.noop() : $.autoprefixer(prefix) ) // Process vendor prefixes
+    .pipe(dev ? $.util.noop() : $.bytediff.start()) // Compare file sizes before min
+    .pipe(dev ? $.util.noop() : $.cssmin()) // Compress css
+    .pipe(dev ? $.util.noop() : $.bytediff.stop()) // Compare file sizes after min
+    .pipe(dev ? $.sourcemaps.write('./_maps') : $.util.noop()) // Process map file
+    .pipe(gulp.dest(paths.styles.dest)) // Deliver to dist
+    .pipe(browserSync.stream({match: '*.css'})) // Stream browser to reflec changes
 },
-// Scripts ES6 Babel
+// Scripts ES6 Babel to ES5
 compile = watch => {
   // Map errors
   const mapError = function(error) {
@@ -87,14 +81,11 @@ compile = watch => {
     entries: `${paths.scripts.src}main.js`,
     extensions: ['.js'],
     cache: {}, // <---- here is important things for optimization 
-    packageCache: {}, // <----  and here
-    dev
+    packageCache: {}, // <----  here
+    debug: dev // <----  and here
   }))
   .transform($.eslintify, {
-    'parserOptions': {
-      'ecmaVersion': 7,
-      'sourceType': 'module'
-    },
+    'parserOptions': { 'ecmaVersion': 7, 'sourceType': 'module' },
     'parser': 'babel-eslint',
     'rules': { quotes: ["error", "single", { avoidEscape: true, allowTemplateLiterals: true}]}
   })
@@ -118,11 +109,12 @@ compile = watch => {
       .pipe($.duration((dev ? 'Script compiled in':'Finished built'))) // Duration
       .pipe(browserSync.stream()) // Reload the view in the browser
   }
-  bundler.on('update', () => rebundle())
+  bundler.on('update', () => rebundle()) // Reload on changes 
   rebundle()
-}, 
+},
 // HTML Pug
 html = buildHTML => {
+  // Notification in terminal on error
   function mapError(err) {
     $.notify({
       title: 'HTML Pug Error',
@@ -137,19 +129,19 @@ html = buildHTML => {
     }).write(err)
     this.emit('end')
   }
-
-  return gulp.src(`${paths.templates.src}**/*.pug`)
+  // Perform tasks
+  return gulp.src('src/**/*.pug')
   .pipe($.pug({ pretty: true }))
   .on('error', mapError)
-  .pipe($.newer(paths.templates.dest))
-  .pipe(gulp.dest(paths.templates.dest))
+  .pipe($.newer('dist/'))
+  .pipe(gulp.dest('dist/'))
 },
 // Images
 images = () => {
   return gulp.src(`${paths.images.src}**/*`,{base: paths.images.src})
     .pipe($.plumber(function(error) {
-        $.util.log($.util.colors.red(`Error (${error.plugin}):  ${error.message}`))
-        this.emit('end')
+      $.util.log($.util.colors.red(`Error (${error.plugin}):  ${error.message}`))
+      this.emit('end')
     }))
     .pipe($.newer(paths.images.dest))
     .pipe(dev ? $.util.noop() : $.imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
@@ -161,27 +153,27 @@ assets = () => {
     .pipe($.newer(paths.assets.dest))
     .pipe(gulp.dest(paths.assets.dest))
 },
-// Clean destination dir
-clean = done => {
-  $.del.sync(paths.templates.dest + 'static')
-  $.del.sync(paths.templates.dest + 'index.html')
+// Clear destination dir
+clear = done => {
+  $.del.sync('dist/static')
+  $.del.sync('dist/index.html')
   done()
 },
 // BrowserSync 
-Browsersync = () => {
+sync = () => {
   browserSync.init(`${paths.styles.dest}*.css`, {
     server: './dist/',
     notify: true,
     debug: false
-  })  
-  gulp.watch(`${paths.templates.src}**/*.pug`, gulp.series(html)).on('change', browserSync.reload)
+  })
+  gulp.watch('src/**/*.pug', gulp.series(html)).on('change', browserSync.reload)
   gulp.watch(`${paths.styles.src}**/*.scss`, gulp.series(styles))
   gulp.watch(`${paths.images.src}**/*`, gulp.series(images)).on('change', browserSync.reload)
   gulp.watch(`${paths.assets.src}**/*`, gulp.series(assets)).on('change', browserSync.reload)
 },
 // Tasks setup
-development = gulp.series(clean, html, styles, images, assets, gulp.parallel(Browsersync, compile)),
-built = gulp.series(clean, html, styles, images, assets, compile)
+development = gulp.series(clear, html, styles, images, assets, gulp.parallel(sync, compile)),
+built = gulp.series(clear, html, styles, images, assets, compile)
 // Initialise tasks
 gulp.task('default', development)
 gulp.task('built', built)
