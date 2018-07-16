@@ -25,70 +25,70 @@ $gutter-xs: 10px;
 $columns: 12;
 
 .container {
-	max-width: $gridwidth;
-	margin: 0 auto;
+  max-width: $gridwidth;
+  margin: 0 auto;
 }
 
 // Grid Mixins 
-	
+  
 // Calculates padding for row and gutter for columns
 @mixin calcPadding($padding) {
-	padding-right: $padding;
-	padding-left:  $padding;
+  padding-right: $padding;
+  padding-left:  $padding;
 }
 
 // Creates 12 columns and offsets and calculates its width
 @mixin createColumns($breakpoint) {
-	@for $i from 1 through $columns {
-  	.col-#{$breakpoint}-#{$i} { 
-  		flex: ((100 / $columns) * $i) * 1%;
-  		max-width: ((100 / $columns) * $i) * 1%;
-  	}
-  	.offset-#{$breakpoint}-#{$i} { margin-left: ((100 / $columns) * $i) * 1% }
-	}
+  @for $i from 1 through $columns {
+    .col-#{$breakpoint}-#{$i} { 
+      flex: ((100 / $columns) * $i) * 1%;
+      max-width: ((100 / $columns) * $i) * 1%;
+    }
+    .offset-#{$breakpoint}-#{$i} { margin-left: ((100 / $columns) * $i) * 1% }
+  }
 }
 
 // Flexbox grid
 .row {
-	display: flex;
-	flex-flow: row wrap;
-	transition: all 0.3s ease;
-	@include calcPadding($margin-sm)
-	&.reverse { flex-flow: row-reverse wrap-reverse }
-	&.center { justify-content: center }
+  display: flex;
+  flex-flow: row wrap;
+  transition: all 0.3s ease;
+  @include calcPadding($margin-sm)
+  &.reverse { flex-flow: row-reverse wrap-reverse }
+  &.center { justify-content: center }
 }
 
 [class*='col'] {
-	width: 100%;
-	margin: 1em auto;
-	@include calcPadding($gutter-xs)
-	&.reverse { flex-flow: column-reverse wrap-reverse }
+  width: 100%;
+  margin: 1em auto;
+  @include calcPadding($gutter-xs)
+  &.reverse { flex-flow: column-reverse wrap-reverse }
 }
 
 @include createColumns(xs)
 
 // Media queries
 @include mobile {
-	.row.full { 
-		@include calcPadding(0);
-		[class*='col'] { @include calcPadding(0) }
-	} 
+  .row.full { 
+    @include calcPadding(0);
+    [class*='col'] { @include calcPadding(0) }
+  } 
 }
 
 @include tablet {
-	.row { @include calcPadding($margin-sm) }
-	@include createColumns(sm)
+  .row { @include calcPadding($margin-sm) }
+  @include createColumns(sm)
 }
 
 @include tabletLrg {
-	.row { @include calcPadding($margin-md) }
-	@include createColumns(md)
+  .row { @include calcPadding($margin-md) }
+  @include createColumns(md)
 }
 
 @include desktop {
-	.row { @include calcPadding($margin-md) }
-	[class*="col"] { @include calcPadding($gutter-md) }
-	@include createColumns(lg)
+  .row { @include calcPadding($margin-md) }
+  [class*="col"] { @include calcPadding($gutter-md) }
+  @include createColumns(lg)
 }
 ```
 
@@ -115,22 +115,22 @@ setSharing() {
 ```js
 // Helper functions to manipulate DOM, format numbers, capiltalise strings and validate email forms
 export const
-	// Select single element
-	select     = el  => document.querySelector(el),
-	// Select Nodelist array of elements
-	selectAll  = els => document.querySelectorAll(els),
-	// Select elements by id
-	getId      = id  => document.getElementById(id),
-	// Capitalise string
-	caps  		 = str => str.charAt(0).toUpperCase() + str.slice(1),
-	// Correct email format regex
-	regexEmail = input => input.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/),
-	// Make foreach available for Nodelists arrays
-	each 			 = (array, callback) => {
-  	for (let i = 0, j = array.length; i < j; i++) callback.call(i, array[i])
+  // Select single element
+  select     = el  => document.querySelector(el),
+  // Select Nodelist array of elements
+  selectAll  = els => document.querySelectorAll(els),
+  // Select elements by id
+  getId      = id  => document.getElementById(id),
+  // Capitalise string
+  caps       = str => str.charAt(0).toUpperCase() + str.slice(1),
+  // Correct email format regex
+  regexEmail = input => input.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/),
+  // Make foreach available for Nodelists arrays
+  each       = (array, callback) => {
+    for (let i = 0, j = array.length; i < j; i++) callback.call(i, array[i])
   },
   // Multi addEventListener, takes multiple parameters ('click load change etc')
-  listen 		 = (el, s, fn) => each(s.split(' '), e => el.addEventListener(e, fn, false))
+  listen     = (el, s, fn) => each(s.split(' '), e => el.addEventListener(e, fn, false))
 ```
 
 ### Quick start
