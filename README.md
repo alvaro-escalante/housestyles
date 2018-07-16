@@ -10,8 +10,6 @@ Pug, SCSS and ES6 with Browserify
 ###  Grid generator with Grid.scss
 
 ```css
-//######### GRID GENERATOR ################
-
 // Max width
 $gridwidth: 1000px;
 
