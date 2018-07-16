@@ -137,7 +137,8 @@ setSharing() {
 ```
 
 
-### Quick start
+Quick start
+-----------
 
 Make sure node.js version is up to date, current node_modules correspond to v10.6.0.
 
