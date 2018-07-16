@@ -4,8 +4,8 @@
 A conplete Gulp 4 task manager set up 
 -------------------------------------
 
-Pug-HTML, SCSS-CSS and ES6-ES5 with Browserify
-----------------------------------------------
+Pug, SCSS and ES6 with Browserify
+---------------------------------
 
 ###  Grid generator with Grid.scss
 
