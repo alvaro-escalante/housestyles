@@ -167,8 +167,6 @@ There is a `gulpfile.js` within this repository to make development much quicker
 
 This will install all the dependencies found in `package.json`, then run the local server through the `gulp` command.
 
-> Note: The `node_modules` folder will not be pushed to the repository as the .gitignore file is present on the repo.
-
 ###### Note for Windows users with Git Bash: you may need to run 'npm run setup' a couple of times for it to finally work.
   
 This will open up a tab in your browser, running a server at `localhost:3000` (unless you have set up a proxy server address - details on how to change this are in the `gulpfile.js` file).
