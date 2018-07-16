@@ -4,8 +4,8 @@
 A complete Gulp 4 task manager set up 
 -------------------------------------
 
-Pug, SCSS and ES6 with Browserify
----------------------------------
+SCSS and ES6 with Browserify
+----------------------------
 
 ###  Grid generator with Grid.scss
 
@@ -146,7 +146,7 @@ Clone the repo and run `npm install`. If you prefer not to use Pug for html mark
 
 For all subsequent uses, just run `gulp --dev` to develop.
 
-For production use `gulp built` to compile Pug to HTML, autoprefix, optimise images and minimise css and JavaScript.
+For production use `gulp built` to compile, autoprefix, optimise images and minimise css and JavaScript.
 
 ###### Note, Windows users may need to run the initial command more than once for it to complete successfully.
 
@@ -178,7 +178,6 @@ This will open up a tab in your browser, running a server at `localhost:3000` (u
 | **gulp** | The streaming build system. |
 | **browser-sync** | Live CSS Reload & Browser Syncing |
 | **gulp-sass** |  Converts SASS files in CSS |
-| **gulp-pug** | This Gulp plugin enables you to compile your Pug templates into HTML |
 | **gulp-sourcemaps** | Source map support for Gulp.js |
 | **gulp-autoprefixer** | Prefix CSS after conversion from SASS. |
 | **gulp-uglify** | Minify JS files with UglifyJS. |
