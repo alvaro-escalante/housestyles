@@ -114,32 +114,13 @@ Scripts = watch => {
   bundler.on('update', () => rebundle()) // Reload on changes 
   rebundle()
 },
-// HTML Pug
-Html = buildHTML => {
-  // Notification in terminal on error
-  function mapError(err) {
-    $.notify({
-      title: 'HTML Pug Error',
-      subtitle: 'Syntax error in Pug!',
-      message: '📍 LINE: ' + err.line + ' - See terminal'
-    }).write(err)
-    let report = 
-      $.util.colors.white('\n📍  HTML Error') + 
-      $.util.colors.red('\n💣  Code: ') + 
-      $.util.colors.yellow(err.code) + 
-      $.util.colors.red('\n💣  Line: ') + 
-      $.util.colors.yellow(err.line) +  
-      $.util.colors.red('\n💣  Message: ') + 
-      $.util.colors.yellow(err.msg) + '\n'
-    console.log(report)
-    this.emit('end')
-  }
-  // Perform tasks
-  return gulp.src('src/**/*.pug')
-  .pipe($.pug({ pretty: true }))
-  .on('error', mapError)
-  .pipe($.newer('dist/'))
-  .pipe(gulp.dest('dist/'))
+// HTML
+Html = () => {
+  return gulp.src('src/**/*.html')
+    //.pipe($.htmlmin({collapseWhitespace: true, minifyJS: true, minifyCSS: true}))
+    .pipe($.newer('dist/'))
+    .pipe(gulp.dest('dist/'))
+    .pipe(browserSync.stream())
 },
 // Images
 Images = () => {
@@ -171,7 +152,7 @@ Browsersync = () => {
     notify: true,
     debug: false
   })
-  gulp.watch('src/**/*.pug', gulp.series(Html)).on('change', browserSync.reload)
+  gulp.watch('src/**/*.html', gulp.series(Html)).on('change', browserSync.reload)
   gulp.watch(`${paths.styles.src}**/*.scss`, gulp.series(Styles))
   gulp.watch(`${paths.images.src}**/*`, gulp.series(Images)).on('change', browserSync.reload)
   gulp.watch(`${paths.assets.src}**/*`, gulp.series(Assets)).on('change', browserSync.reload)
