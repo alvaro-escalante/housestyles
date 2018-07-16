@@ -92,7 +92,7 @@ $columns: 12;
 }
 ```
 
-###  Sharing generator with pure JavaScript
+###  Pure JavaScript sharing generator 
 
 ```js
 setSharing() {
