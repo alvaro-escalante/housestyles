@@ -95,24 +95,6 @@ $columns: 12;
 }
 ```
 
-###  Pure JavaScript sharing generator 
-
-```js
-setSharing() {
-  const getMetaContentByName = (name, attrtype, content) => {
-    content = content == null ? 'content' : content
-    const ret = select('meta[' + attrtype + '=\'' + name + '\']').getAttribute(content)
-    return ret.replace(/ /gi, '%20');
-  }
-  
-  each(selectAll('.social li'), els => {
-    let txt = els.innerHTML.replace(/SBTITLE/gi, getMetaContentByName('og:title', 'property'))
-    txt = txt.replace(/SBLINK/gi, escape(window.location.href))
-    els.innerHTML = txt
-  })
-}
-```
-
 ### Mini JS library to manipulate DOM
 
 ```js
@@ -134,6 +116,24 @@ export const
   },
   // Multi addEventListener, takes multiple parameters ('click load change etc')
   listen     = (el, s, fn) => each(s.split(' '), e => el.addEventListener(e, fn, false))
+```
+
+###  Pure JavaScript sharing generator 
+
+```js
+setSharing() {
+  const getMetaContentByName = (name, attrtype, content) => {
+    content = content == null ? 'content' : content
+    const ret = select('meta[' + attrtype + '=\'' + name + '\']').getAttribute(content)
+    return ret.replace(/ /gi, '%20');
+  }
+  
+  each(selectAll('.social li'), els => {
+    let txt = els.innerHTML.replace(/SBTITLE/gi, getMetaContentByName('og:title', 'property'))
+    txt = txt.replace(/SBLINK/gi, escape(window.location.href))
+    els.innerHTML = txt
+  })
+}
 ```
 
 
