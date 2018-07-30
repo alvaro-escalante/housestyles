@@ -25,41 +25,20 @@ main {
 footer {
 	margin-top: 2em;
 	margin-bottom: 2em;
+	width: 100%;
 }
 
-.social {
-	@include mobileLrg {
-		order: 0;
-		padding-right: 0;
-	}
-	li { display: inline-block } 
-
-	.link{
-		text-decoration: none;
-		margin-right: 0.5em;
-		display: inline-block;
-		width: 40px;
-		height: 40px;
-		padding: 0;
-		text-align: center;
-		border-radius: 20px;
-		font-size: 15px; 
-		border-bottom: 2px solid #8797b7;
-		box-shadow: 0 1px 2px -1px #142c56; 
-		line-height: 2.8em;
+.sharelinks {
+	display: flex;
+	justify-content: space-around;
+	max-width: 250px;
+	margin: 3em auto 0;
+	width: 100%;
+	.social{
+		@include fontsize(50);
 		color: #142c56;
-		transition: border-color 0.3s ease;
-		&:hover {
-			border-color: transparent;
-			opacity: 0.7; 
-		} 
+		transition: opacity 0.4s ease;
+		&:hover { opacity: 0.8 }
 	}
-	.icon-linkedin {
-		font-size: 17px;
-		line-height: 0.1em;
-	}
-	.icon-google-plus {
-		font-size: 20px;
-		line-height: 1.9em;
-	}
+
 }

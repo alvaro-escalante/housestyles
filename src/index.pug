@@ -6,6 +6,25 @@ html(lang='en')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
 
+    meta(name="description", content="FIXME")
+    // Open Graph metadata
+    meta(property="og:title", content="FIXME")
+    |   
+    meta(property="og:description", content="FIXME")
+    meta(property="og:site_name", content="CLIENT_NAME")
+    meta(property="article:publisher", content="https://www.facebook.com/FIXME/")
+    meta(property="og:url", content="PIECE_URL")
+    meta(property="og:type", content="website")
+    meta(property="og:image", content="https://PIECE_URL/static/img/facebook-sharing.jpg")
+    // Twitter metadata
+    meta(name="twitter:title", content="FIXME")
+    meta(name="twitter:description", content="FIXME")
+    meta(name="twitter:card", content="summary_large_image")
+    meta(name="twitter:site", content="@FIXME")
+    meta(name="twitter:url", content="PIECE_URL")
+    meta(name="twitter:image", content="https://PIECE_URL/static/img/twitter-sharing.jpg")
+
+
     link(rel='stylesheet', type='text/css', href='static/css/styles.min.css')
   body
     main
@@ -28,16 +47,12 @@ html(lang='en')
           p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque ratione aspernatur ea fugiat sapiente obcaecati dicta nulla, aperiam. Modi omnis debitis libero, eaque porro odit eum itaque saepe perspiciatis facilis.
 
 
-      .row.center
-        footer
-          ul.social.sharelinks
-            li
-              a.link(target='_blank', href='https://www.facebook.com/sharer/sharer.php?u=SBLINK', title='Share on Facebook')
-                i.icon-facebook
-            li
-              a.link(target='_blank', href='https://twitter.com/intent/tweet?text=SBLINK', title='Share on Twitter')
-                i.icon-twitter
-            li
-              a.link(target='_blank', href='https://www.linkedin.com/shareArticle?mini=true&url=SBLINK&title=SBTITLE&summary=SBDESC&source=', title='Share on Linkedin')
-                i.icon-linkedin
+      footer.row.center
+        ul.sharelinks
+          li #[a.social.icon-facebook(target='_blank', href='https://www.facebook.com/sharer/sharer.php?u=SBLINK', title='Share on Facebook')]
+        
+          li #[a.social.icon-twitter(target='_blank', href='https://twitter.com/intent/tweet?text=SBLINK', title='Share on Twitter')]
+            
+          li #[a.social.icon-linkedin(target='_blank', href='https://www.linkedin.com/shareArticle?mini=true&url=SBLINK&title=SBTITLE&summary=SBDESC&source=', title='Share on Linkedin')]
+               
     script(src='static/js/main.min.js')

@@ -2,7 +2,7 @@ import { select, selectAll, getId, each, listen } from './components/functions'
 window.onload = (() => {
   const app = {
   	init() {
-      //app.setSharing()
+      app.setSharing()
       console.log('JavaScript loaded!')
   	},
     // Detect element is on viewport
@@ -31,10 +31,10 @@ window.onload = (() => {
         return ret.replace(/ /gi, '%20');
       }
       
-      each(selectAll('.social li'), els => {
-        let txt = els.innerHTML.replace(/SBTITLE/gi, getMetaContentByName('og:title', 'property'))
+      each(selectAll('.social'), els => {
+        let txt = els.href.replace(/SBTITLE/gi, getMetaContentByName('og:title', 'property'))
         txt = txt.replace(/SBLINK/gi, escape(window.location.href))
-        els.innerHTML = txt
+        els.href = txt
       })
     }
   }
