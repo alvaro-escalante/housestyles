@@ -8,11 +8,16 @@ export const
 	getId      = id  => document.getElementById(id),
 	// Capitalise string
 	caps  		 = str => str.charAt(0).toUpperCase() + str.slice(1),
-	// Correct email format regex
-	regexEmail = input => input.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/),
-	// Make foreach available for Nodelists arrays
 	each 			 = (array, callback) => {
   	for (let i = 0, j = array.length; i < j; i++) callback.call(i, array[i])
   },
+  rect 			 = el => el.getBoundingClientRect(),
+  offSet = el => {
+  	const rect = el.getBoundingClientRect()
+	  return {
+	    top: rect.top + window.pageYOffset,
+	    left: rect.left + window.pageXOffset,
+	  }
+	},
   // Multi addEventListener, takes multiple parameters ('click load change etc')
   listen 		 = (el, s, fn) => each(s.split(' '), e => el.addEventListener(e, fn, false))

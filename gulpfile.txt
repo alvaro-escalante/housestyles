@@ -21,6 +21,14 @@ const paths = {
 // Initialization
 gulp = require('gulp'),
 $ = require('gulp-load-plugins')({ pattern: '*', camelize: true }),
+prefix = { 
+  browsers: [
+  'iOS >= 8',
+  'Chrome >= 30',
+  'Explorer >= 11',
+  'Last 2 Edge Versions',
+  'Firefox >= 25' 
+]},
 browserSync = $.browserSync.create(),
 dev = !!$.util.env.dev,
 // Styles SCSS to CSS
@@ -49,7 +57,7 @@ Styles = () => {
     .pipe(dev ? $.sourcemaps.init() : $.util.noop()) // Enable sourcemaps
     .pipe($.sass()) // Process Sass to produce css
     .pipe($.concat('styles.min.css')) // Concat all scss into one css file
-    .pipe(dev ? $.util.noop() : $.autoprefixer() ) // Process vendor prefixes
+    .pipe(dev ? $.util.noop() : $.autoprefixer(prefix) ) // Process vendor prefixes
     .pipe(dev ? $.util.noop() : $.bytediff.start()) // Compare file sizes before min
     .pipe(dev ? $.util.noop() : $.cssmin()) // Compress css
     .pipe(dev ? $.util.noop() : $.bytediff.stop()) // Compare file sizes after min
@@ -64,7 +72,7 @@ Scripts = build => {
     $.notify({
       title: 'Javascript Error',
       subtitle: 'Syntax error in script!',
-      message: error.message,
+      message: 'Error in JavaScript - See terminal',
       icon: 'node_modules/gulp-notify/assets/gulp-error.png'
     }).write(error)
     this.emit('end')
@@ -76,12 +84,21 @@ Scripts = build => {
     cache: {}, // <---- here for optimization 
     packageCache: {}, // <----  here
     debug: dev // <----  and here
+  },
+  //Transform options
+  eslit = {
+    'parserOptions': { 'ecmaVersion': 7, 'sourceType': 'module' },
+    'parser': 'babel-eslint',
+    'rules': { quotes: ["error", "single", { avoidEscape: true, allowTemplateLiterals: true}]}
+  },
+  babel = {
+    'sourceMaps': dev,
+    'presets': [["env", { "targets": {"ie": "11"} }]],
+    'plugins': ['add-module-exports'],
+    'ignore':  ['src/static/assets/**', 'src/static/scss/**']
   }
-
-  let transform = mode => mode.transform($.eslintify).transform($.babelify, {'sourceMaps': dev })
-  
-  const built = transform($.browserify(opts)), 
-        watch = transform($.watchify($.browserify(opts))),
+  let transform = mode => mode.transform($.eslintify, eslit).transform($.babelify, babel)
+  const built = transform($.browserify(opts)), watch = transform($.watchify($.browserify(opts))),
 
   bundle = type => type
     .bundle()
@@ -99,27 +116,27 @@ Scripts = build => {
 
   return build === 'build' ? bundle(built) : bundle(watch)
 },
-// HTML Regular
-// Html = () => {
-//  return gulp.src('src/**/*.pug')
-//   //.pipe($.htmlmin({collapseWhitespace: true, minifyJS: true, minifyCSS: true}))
-//   .pipe($.newer('dist/'))
-//   .pipe(gulp.dest('dist/'))
-//   .pipe(browserSync.stream())
-// },
 // HTML Pug
-Html = () => {
- const mapError = function(error) {
-    return $.notify({
-      title: 'html Error',
-      subtitle: 'Syntax error in pug file!',
-      message: error,
-      sound: 'Beep',
-      icon: 'node_modules/gulp-notify/assets/gulp-error.png'
-    }).write(error)
+Html = buildHTML => {
+  // Notification in terminal on error
+  function mapError(err) {
+    $.notify({
+      title: 'HTML Pug Error',
+      subtitle: 'Syntax error in Pug!',
+      message: '📍 LINE: ' + err.line + ' - See terminal'
+    }).write(err)
+    let report = 
+      $.util.colors.white('\n📍  HTML Error') + 
+      $.util.colors.red('\n💣  Code: ') + 
+      $.util.colors.yellow(err.code) + 
+      $.util.colors.red('\n💣  Line: ') + 
+      $.util.colors.yellow(err.line) +  
+      $.util.colors.red('\n💣  Message: ') + 
+      $.util.colors.yellow(err.msg) + '\n'
+    console.log(report)
     this.emit('end')
   }
-
+  // Perform tasks
   return gulp.src('src/**/*.pug')
   .pipe($.pug({ pretty: true }))
   .on('error', mapError)
@@ -161,10 +178,9 @@ Browsersync = () => {
   gulp.watch(`${paths.images.src}**/*`, gulp.series(Images)).on('change', browserSync.reload)
   gulp.watch(`${paths.assets.src}**/*`, gulp.series(Assets)).on('change', browserSync.reload)
 },
-
 // Tasks setup
-series = [Clear, Html, Styles, Images, Assets]
-
+development = gulp.series(Clear, Html, Styles, Images, Assets, gulp.parallel(Scripts, Browsersync)),
+built = gulp.series(Clear, Html, Styles, Images, Assets, Scripts.bind(null, 'build'))
 // Initialise tasks
-gulp.task('default', gulp.series(series, gulp.parallel(Scripts, Browsersync)))
-gulp.task('built', gulp.series(series, Scripts.bind(null, 'build')))
+gulp.task('default', development)
+gulp.task('built', built)

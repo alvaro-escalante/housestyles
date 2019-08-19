@@ -3,6 +3,28 @@
 	font-size: ($size / 16) + rem;
 }
 
+
+@mixin font($weight) {
+
+  @if $weight == 'thin'{ 
+    font-family: 'Roboto';
+    font-weight: 200;
+  }
+  
+  @if $weight == 'light'{ 
+    font-family: 'Roboto';
+    font-weight: 300;
+  }
+  @else if $weight == 'reg'  { 
+    font-family: 'Roboto';
+    font-weight: 400;
+  }
+  @else if $weight == 'med' { 
+    font-family: 'Roboto';
+    font-weight: 500;
+  }
+}
+
 @mixin lineheight($fontsize,$lineheight) { line-height:$lineheight / ($fontsize / 100%) }
 
 @mixin no-highlight() {

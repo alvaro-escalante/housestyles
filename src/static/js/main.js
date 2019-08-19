@@ -3,28 +3,27 @@ window.onload = (() => {
   const app = {
   	init() {
       app.setSharing()
-      console.log('JavaScript loaded!')
   	},
     // Detect element is on viewport
-    viewPort(el) {
+    viewPort: el => {
       const rect = el.getBoundingClientRect(), offset = rect.height,
             viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight)
             
       return viewHeight > rect.top + viewHeight - offset
     },
     // Function to smooth scroll to a given element 
-    animate(to, time) {
+    animate: (to, time) => {
       time = typeof time === 'undefined' ? 1000 : time
       let doc = document.scrollingElement || document.documentElement
       if (!doc) return
       const start = new Date().getTime(), timer = setInterval(() => {
         let step = Math.min(1, (new Date().getTime() - start) / time)
-        doc.scrollTop = (window.pageYOffset + step * (to.offsetTop - window.pageYOffset))
+        doc.scrollTop = (window.pageYOffset + step * (to - window.pageYOffset))
         if (step === 1)  clearInterval(timer)
       }, 25)
       doc.scrollTop = window.pageYOffset
     },
-    setSharing() {
+    setSharing: () => {
       const getMetaContentByName = (name, attrtype, content) => {
         content = content == null ? 'content' : content
         const ret = select('meta[' + attrtype + '=\'' + name + '\']').getAttribute(content)
